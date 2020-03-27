@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :organization do
-    name { "MyString" }
-    domain { "MyString" }
+    name { "Corporate Response" }
+    domain { "https://www.corporateresponse.net" }
   end
 end
