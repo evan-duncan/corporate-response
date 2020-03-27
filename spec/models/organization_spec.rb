@@ -15,5 +15,6 @@ RSpec.describe Organization, type: :model do
 
   context 'associations' do
     it { should have_many(:evidences) }
+    it { should have_and_belong_to_many(:events) }
   end
 end

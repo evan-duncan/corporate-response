@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :organizations, only: [:index, :new, :create, :show] do
     scope module: :organizations do
       resource :evidence, only: [:index, :show]
+      resources :events, only: [:index, :show]
     end
   end
+  resources :events, only: [:index, :show, :new, :create]
 end

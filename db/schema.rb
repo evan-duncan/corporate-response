@@ -10,18 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_021620) do
+ActiveRecord::Schema.define(version: 2020_03_27_044701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "evidences", force: :cascade do |t|
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "synopsis", null: false
+    t.string "url", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events_organizations", force: :cascade do |t|
+    t.bigint "event_id", null: false
     t.bigint "organization_id", null: false
+    t.index ["event_id"], name: "index_events_organizations_on_event_id"
+    t.index ["organization_id"], name: "index_events_organizations_on_organization_id"
+  end
+
+  create_table "evidences", force: :cascade do |t|
     t.string "url", null: false
     t.boolean "fabricated", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["organization_id"], name: "index_evidences_on_organization_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_evidences_on_event_id"
     t.index ["url"], name: "index_evidences_on_url"
   end
 
@@ -54,5 +90,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_021620) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "evidences", "organizations"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "events_organizations", "events"
+  add_foreign_key "events_organizations", "organizations"
 end

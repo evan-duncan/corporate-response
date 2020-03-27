@@ -1,9 +1,8 @@
 <div class="jumbotron jumbotron-fluid" style="background-color: transparent">
-  <div class="container">
-    <h1 class="display-4">Tired of corporate greed?</h1>
+  <div class="container text-center">
+    <h1 class="display-3">Tired of corporate greed?</h1>
     <br />
     <p class="lead">...us too.</p>
-    <br />
     <br />
     <br />
     <p class="lead">
@@ -13,18 +12,20 @@
     <br />
     <br />
     <br />
+    <br />
     <p class="lead">Only <u>some</u> of them here will be.</p>
   </div>
 </div>
 <div>
-  <% if @evidence.any? %>
-    <h1>Here's some of our latest findings</h1>
-    <% @evidence.each do |e| %>
-      <div class="card">
+  <% if @events.any? %>
+    <h1>What is happening around the world?</h1>
+    <% @events.each do |event| %>
+      <div class="card" style="width: 18rem">
+        <img src="<%= url_for event.image %>" alt="<%= event.name %>" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">foo"</h5>
-          <p class="card-text">bar</p>
-          <%= link_to "Read more" %>
+          <h5 class="card-title"><%= event.name %></h5>
+          <p class="card-text"><%= truncate(event.synopsis, length: 100) %></p>
+          <%= link_to "Read more", event_path(event.id), class: 'btn btn-primary' %>
         </div>
       </div>
     <% end %>
