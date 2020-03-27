@@ -1,0 +1,2 @@
+module CorporateResponsesHelper
+end
