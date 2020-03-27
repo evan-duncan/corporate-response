@@ -1,2 +1,32 @@
-<h1>CorporateResponses#index</h1>
-<p>Find me in app/views/corporate_responses/index.html.erb</p>
+<div class="jumbotron jumbotron-fluid" style="background-color: transparent">
+  <div class="container">
+    <h1 class="display-4">Tired of corporate greed?</h1>
+    <br />
+    <p class="lead">...us too.</p>
+    <br />
+    <br />
+    <br />
+    <p class="lead">
+      So we decided to keep a record of what corporations do in times of need.
+      We believe there are still good companies out there.
+    </p>
+    <br />
+    <br />
+    <br />
+    <p class="lead">Only <u>some</u> of them here will be.</p>
+  </div>
+</div>
+<div>
+  <% if @evidence.any? %>
+    <h1>Here's some of our latest findings</h1>
+    <% @evidence.each do |e| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">foo"</h5>
+          <p class="card-text">bar</p>
+          <%= link_to "Read more" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

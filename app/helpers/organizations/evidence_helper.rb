@@ -1,0 +1,2 @@
+module Organizations::EvidenceHelper
+end

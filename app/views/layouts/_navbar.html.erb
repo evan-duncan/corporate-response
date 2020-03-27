@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg">
+  <%= link_to "Corporate Response", root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%= form_with url: '/search', method: 'get', class: 'form-inline mx-auto' do %>
+      <%= text_field_tag :q, nil, class: 'form-control mr-2', placeholder: 'Find Company' %>
+      <%= submit_tag "Search", class: 'btn btn-outline-primary my-2 my-sm-0' %>
+    <% end %>
+    <div class="navbar-nav my-2 my-lg-0">
+      <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %>
+      <% else %>
+        <%= link_to "Register", new_user_registration_path, class: 'nav-item nav-link' %>
+        <%= link_to "Sign in", new_user_session_path, class: 'nav-item nav-link' %>
+      <% end %>
+    </div>
+  </div>
+</nav>

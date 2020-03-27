@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   root to: 'corporate_responses#index'
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resource :evidence, only: [:new, :create]
+  resource :search, only: [:show]
+  resources :organizations, only: [:index, :new, :create, :show] do
+    scope module: :organizations do
+      resource :evidence, only: [:index, :show]
+    end
+  end
 end
