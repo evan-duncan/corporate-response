@@ -1,0 +1,12 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= devise_flash_to_bootstrap(key) %> alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <ul>
+      <li>
+        <%= value %>
+      </li>
+    </ul>
+  </div>
+<% end %>
