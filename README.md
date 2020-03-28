@@ -1,4 +1,4 @@
-# Corporate Response
+# Corporate Response ![Rails](https://github.com/evan-duncan/corporate-response/workflows/Rails/badge.svg)
 
 Having a hard time remembering what corporations around the world do when things get tricky? Me too.
 
