@@ -61,6 +61,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "corporate_response_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'www.corporateresponse.net' }
   config.action_mailer.delivery_method = :sendgrid_actionmailer
   config.action_mailer.sendgrid_actionmailer_settings = {
     api_key: ENV.fetch('SENDGRID_API_KEY'),
