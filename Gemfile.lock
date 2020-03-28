@@ -70,6 +70,7 @@ GEM
     administrate-field-active_storage (0.2.2)
       administrate (>= 0.2.2)
       rails (>= 6.0)
+    ast (2.4.0)
     autoprefixer-rails (9.7.5)
       execjs
     aws-eventstream (1.0.3)
@@ -1038,6 +1039,8 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    parser (2.7.0.5)
+      ast (~> 2.4.0)
     pg (1.2.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -1110,6 +1113,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (2.6.7)
+      parser
     selectize-rails (0.12.6)
     sendgrid-actionmailer (3.0.0)
       mail (~> 2.7)
@@ -1174,6 +1179,7 @@ DEPENDENCIES
   rails (~> 6.0.2, >= 6.0.2.1)
   rspec-rails (~> 4.0)
   sass-rails (>= 6)
+  scout_apm
   sendgrid-actionmailer
   shoulda-matchers
   spring
