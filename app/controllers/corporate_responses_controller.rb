@@ -1,5 +1,6 @@
 class CorporateResponsesController < ApplicationController
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
+    authorize @events
   end
 end

@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   def show
+    authorize :search
     @org = Organization.find_by(name: search_params[:q])
     redirect_to organization_path(@org.id) if @org.present?
   end

@@ -10,4 +10,12 @@ Rails.application.routes.draw do
     end
   end
   resources :events, only: [:index, :show, :new, :create]
+  namespace :admin do
+    resources :users
+    resources :evidences
+    resources :organizations
+    resources :events
+
+    root to: "users#index"
+  end
 end

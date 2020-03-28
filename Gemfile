@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 
+gem 'administrate', '~> 0.13.0'
+gem 'administrate-field-active_storage'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bcrypt', '~> 3.1.7'
@@ -11,6 +13,7 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
+gem 'pundit', '~> 2.1'
 gem 'mini_magick'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'

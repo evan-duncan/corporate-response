@@ -4,6 +4,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+    authorize @organization
   end
 
   def create
