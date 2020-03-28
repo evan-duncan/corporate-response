@@ -1,2 +1,35 @@
-<h1>Evidences#new</h1>
-<p>Find me in app/views/evidences/new.html.erb</p>
+<h1 class="display-4">Submit Evidence</h1>
+<div class="col-xs-12 col-md-6">
+  <h2 class="lead">What is evidence?</h2>
+  <br />
+  <p>
+    Evidence comes in the form news reports, corporate communications, or some legitimate claim to <i>something</i> happening.
+  </p>
+  <p>
+    When evidence is submitted it is processed, and related to the organization(s) that are relevant. The evidence
+    will then show up under the details of an organization for a given event. If the organization does not exist it
+    will be created. If the event does not exist it will be reviewed and considered for creation.
+  </p>
+  <h3>Evidence</h3>
+  <%= form_with model: @submission, url: evidence_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.url_field :url, class: 'form-control', placeholder: "URL"  %>
+    </div>
+    <div class="form-group">
+      <h5>Opinion</h5>
+      <div class="form-check">
+        <%= f.radio_button :opinion, :negative, class: 'form-check-input' %>
+        <%= f.label :opinion_negative, 'Negative', class: 'form-check-label' %>
+      </div>
+      <div class="form-check">
+        <%= f.radio_button :opinion, :neutral, class: 'form-check-input' %>
+        <%= f.label :opinion_neutral, 'Neutral', class: 'form-check-label' %>
+      </div>
+      <div class="form-check">
+        <%= f.radio_button :opinion, :positive, class: 'form-check-input' %>
+        <%= f.label :opinion_positive, 'Positive', class: 'form-check-label' %>
+      </div>
+    </div>
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :evidences
     resources :organizations
     resources :events
+    resources :submissions
 
     root to: "users#index"
   end
