@@ -1,13 +1,13 @@
 <h1 class="display-4"><%= @event.name %></h1>
 <div class="row">
-  <img src="<%= url_for(@event.image) %>" alt="<%= @event.name %>" class="col-xs-12 col-md-6 order-xs-first order-md-last">
-  <div class="col-xs-12 col-md-6 order-xs-last order-md-first">
+  <div class="col-xs-12 col-md-6">
     <p class="lead" style="max-width: 720px;"><%= @event.synopsis %></p>
+    <%= link_to "Learn More", @event.url, class: 'btn btn-info' %>
   </div>
 </div>
 <br />
 <% if @event.organizations.any? %>
-  <h2>How are organizations responding?</h2>
+  <h2>How are companies responding?</h2>
   <ul>
     <% @event.organizations.each do |organization| %>
       <li><%= link_to organization.name, organization_event_path(organization.id, @event.id) %></li>
