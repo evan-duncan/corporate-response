@@ -18,6 +18,7 @@ gem 'mini_magick'
 gem 'sass-rails', '>= 6'
 gem 'scout_apm'
 gem 'sendgrid-actionmailer'
+gem "sentry-raven"
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
