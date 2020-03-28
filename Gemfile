@@ -16,6 +16,7 @@ gem 'puma', '~> 4.1'
 gem 'pundit', '~> 2.1'
 gem 'mini_magick'
 gem 'sass-rails', '>= 6'
+gem 'sendgrid-actionmailer'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
