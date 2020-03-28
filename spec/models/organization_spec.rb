@@ -17,4 +17,21 @@ RSpec.describe Organization, type: :model do
     it { should have_many(:evidences) }
     it { should have_and_belong_to_many(:events) }
   end
+
+  describe '#name_search' do
+    before do
+      5.times do
+        n = SecureRandom.random_number
+        Organization.create(name: "Evil Corp #{n}", domain: "https://www.evil-corp-#{n}.com")
+      end
+    end
+
+    it 'should return organizations with a similar name' do
+      expect(Organization.name_search('evil corp').count).to eq(5)
+    end
+
+    it 'should not return organizations where the search query is not good enough' do
+      expect(Organization.name_search('evil').count).to eq(0)
+    end
+  end
 end

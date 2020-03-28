@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   def index
+    @organizations = policy_scope Organization
   end
 
   def show

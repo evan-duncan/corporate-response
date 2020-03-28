@@ -47,8 +47,6 @@ class OrganizationDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   name
   domain
-  events
-  evidences
   ].freeze
 
   # COLLECTION_FILTERS

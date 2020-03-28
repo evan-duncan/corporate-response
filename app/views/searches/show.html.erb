@@ -1,2 +1,16 @@
-<h1>Searches#show</h1>
-<p>Find me in app/views/searches/show.html.erb</p>
+<h2>Results for "<%= @search %>"</h2>
+<% if @organizations.empty? %>
+  <h3>We couldn't find any companies with that name.</h3>
+<% else %>
+  <div class="list-group">
+    <% @organizations.each do |organization| %>
+      <a href="<%= organization_path(organization) %>" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= organization.name %></h5>
+          <small>created <%= time_ago_in_words organization.created_at %></small>
+        </div>
+        <p class="mb-1"><%= organization.domain %></p>
+      </a>
+    <% end %>
+  </div>
+<% end %>
