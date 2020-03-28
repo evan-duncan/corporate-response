@@ -12,10 +12,13 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
-    <section id="content" class="container-fluid">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-    </section>
+    <div class="content">
+      <%= render 'layouts/navbar' %>
+      <section id="content" class="container-fluid">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </section>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
