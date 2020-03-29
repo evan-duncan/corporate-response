@@ -8,13 +8,13 @@ class EvidenceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    organization: Field::BelongsTo,
+    event: Field::BelongsTo,
     id: Field::Number,
     url: Field::String,
+    headline: Field::String,
     fabricated: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    event_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,32 +23,33 @@ class EvidenceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  organization
   id
   url
+  headline
+  event
   fabricated
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  organization
   id
   url
+  headline
+  event
   fabricated
   created_at
   updated_at
-  event_id
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  organization
+  event
+  headline
   url
   fabricated
-  event_id
   ].freeze
 
   # COLLECTION_FILTERS
