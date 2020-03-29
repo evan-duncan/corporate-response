@@ -22,7 +22,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-
+    user.admin?
   end
 
   def authenticate_admin?
