@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: 'corporate_responses#index'
   devise_for :users
@@ -16,6 +18,10 @@ Rails.application.routes.draw do
     resources :organizations
     resources :events
     resources :submissions
+
+    authenticate :user, ->(user) { user.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
 
     root to: "users#index"
   end
