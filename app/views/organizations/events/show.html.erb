@@ -1,5 +1,5 @@
 <h1 class="display-4">
-  <%= link_to @organization.name, organization_path(@organization) %> vs. <%= link_to @event.name, event_path(@event) %></h1>
+  <%= link_to @organization.name, organization_path(@organization), class: 'text-body' %> vs. <%= link_to @event.name, event_path(@event), class: 'text-body' %></h1>
 <% if @evidences.empty? %>
   <h2>No evidence submitted for this event.</h2>
 <% else %>
@@ -8,9 +8,8 @@
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><%= evidence.headline %></h5>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        <a href="#" class="card-link">Discuss</a>
-        <a href="<%= evidence.url %>" class="card-link">Read</a>
+        <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words evidence.updated_at %></small></p>
+        <a href="<%= evidence.url %>" class="card-link">Source</a>
       </div>
     </div>
   <% end %>
