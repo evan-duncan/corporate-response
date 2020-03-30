@@ -9,12 +9,12 @@ class SubmissionPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    user.admin?
+  def create?
+    true
   end
 
-  def create?
-    user.role.present?
+  def show?
+    user.admin?
   end
 
   def update?

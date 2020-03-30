@@ -1,9 +1,6 @@
 class EvidencesController < ApplicationController
-  include SessionRequireable
-
   def new
-    @submission = Submission.new
-    authorize @submission
+    @submission = authorize Submission.new
   end
 
   def create
