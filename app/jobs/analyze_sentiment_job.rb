@@ -8,5 +8,6 @@ class AnalyzeSentimentJob < ApplicationJob
 
     analyzer = Sentimental.new
     submission.sentiment = analyzer.sentiment(text)
+    submission.save!
   end
 end
