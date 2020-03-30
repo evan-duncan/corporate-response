@@ -5,6 +5,8 @@ class Submission < ApplicationRecord
   validates :opinion, presence: true
   validates_presence_of :processed_at, if: :processed?
 
+  after_create :set_default_sentiment
+
   enum opinion: %i[
     positive
     neutral
@@ -12,8 +14,15 @@ class Submission < ApplicationRecord
   ], _suffix: true
 
   enum sentiment: %i[
+    unknown
     positive
     neutral
     negative
   ], _suffix: true
+
+  private
+
+  def set_default_sentiment
+    self.sentiment = :unknown
+  end
 end
