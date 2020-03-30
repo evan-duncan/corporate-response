@@ -7,6 +7,8 @@ class Submission < ApplicationRecord
 
   after_create :set_default_sentiment
 
+  belongs_to :source, optional: true
+
   enum opinion: %i[
     positive
     neutral
@@ -19,6 +21,18 @@ class Submission < ApplicationRecord
     neutral
     negative
   ], _suffix: true
+
+  scope :ready_for_processing, -> { where.not(source: nil) }
+
+  def host_name
+    parsed = URI.parse(url)
+    "#{parsed.scheme}://#{parsed.host}"
+  end
+
+  def url_path
+    parsed = URI.parse(url)
+    parsed.path
+  end
 
   private
 

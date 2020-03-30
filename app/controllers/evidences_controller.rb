@@ -4,8 +4,9 @@ class EvidencesController < ApplicationController
   end
 
   def create
-    @submission = Submission.create(strong_params)
-    authorize @submission
+    @submission = authorize Submission.create(strong_params)
+    source = Source.find_by(url: @submission.host_name)
+    @submission.source = source if source.present?
     if @submission.save
       redirect_to root_path, flash: { notice: 'Thank you for your submission'}
     else

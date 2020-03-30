@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class SubmissionDashboard < Administrate::BaseDashboard
+class SourceDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,12 +9,9 @@ class SubmissionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    name: Field::String,
     url: Field::String,
-    opinion: EnumField,
-    sentiment: EnumField,
-    source: Field::BelongsTo,
-    processed: Field::Boolean,
-    processed_at: Field::DateTime,
+    submissions: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,23 +23,19 @@ class SubmissionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
+  name
   url
-  opinion
-  sentiment
-  source
-  processed
+  submissions
+  created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
+  name
   url
-  opinion
-  sentiment
-  source
-  processed
-  processed_at
+  submissions
   created_at
   updated_at
   ].freeze
@@ -51,12 +44,8 @@ class SubmissionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+  name
   url
-  opinion
-  sentiment
-  source
-  processed
-  processed_at
   ].freeze
 
   # COLLECTION_FILTERS
@@ -71,10 +60,10 @@ class SubmissionDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how submissions are displayed
+  # Overwrite this method to customize how sources are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(submission)
-  #   "Submission ##{submission.id}"
+  # def display_resource(source)
+  #   "Source ##{source.id}"
   # end
 end

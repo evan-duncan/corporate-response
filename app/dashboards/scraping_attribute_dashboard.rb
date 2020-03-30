@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class SubmissionDashboard < Administrate::BaseDashboard
+class ScrapingAttributeDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,13 +8,11 @@ class SubmissionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
-    url: Field::String,
-    opinion: EnumField,
-    sentiment: EnumField,
     source: Field::BelongsTo,
-    processed: Field::Boolean,
-    processed_at: Field::DateTime,
+    id: Field::Number,
+    heading_selector: Field::String,
+    subheading_selector: Field::String,
+    story_selector: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,24 +23,20 @@ class SubmissionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  id
-  url
-  opinion
-  sentiment
   source
-  processed
+  id
+  heading_selector
+  subheading_selector
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  id
-  url
-  opinion
-  sentiment
   source
-  processed
-  processed_at
+  id
+  heading_selector
+  subheading_selector
+  story_selector
   created_at
   updated_at
   ].freeze
@@ -51,12 +45,10 @@ class SubmissionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  url
-  opinion
-  sentiment
   source
-  processed
-  processed_at
+  heading_selector
+  subheading_selector
+  story_selector
   ].freeze
 
   # COLLECTION_FILTERS
@@ -71,10 +63,10 @@ class SubmissionDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how submissions are displayed
+  # Overwrite this method to customize how scraping attributes are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(submission)
-  #   "Submission ##{submission.id}"
+  # def display_resource(scraping_attribute)
+  #   "ScrapingAttribute ##{scraping_attribute.id}"
   # end
 end

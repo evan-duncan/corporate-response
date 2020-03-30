@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_021236) do
+ActiveRecord::Schema.define(version: 2020_03_30_041420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -119,6 +119,24 @@ ActiveRecord::Schema.define(version: 2020_03_30_021236) do
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
 
+  create_table "scraping_attributes", force: :cascade do |t|
+    t.string "heading_selector"
+    t.string "subheading_selector"
+    t.string "story_selector"
+    t.bigint "source_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_id"], name: "index_scraping_attributes_on_source_id"
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_sources_on_name"
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.string "url", null: false
     t.integer "opinion", null: false
@@ -127,6 +145,8 @@ ActiveRecord::Schema.define(version: 2020_03_30_021236) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sentiment"
+    t.bigint "source_id"
+    t.index ["source_id"], name: "index_submissions_on_source_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -157,4 +177,6 @@ ActiveRecord::Schema.define(version: 2020_03_30_021236) do
   add_foreign_key "discussions", "evidences"
   add_foreign_key "events_organizations", "events"
   add_foreign_key "events_organizations", "organizations"
+  add_foreign_key "scraping_attributes", "sources"
+  add_foreign_key "submissions", "sources"
 end

@@ -1,8 +1,6 @@
 <h1 class="main-content__page-title">Create Sentiment</h1>
 <%= form_with url: admin_tools_sentiments_path, local: true do |f| %>
   <%= f.label :submission_id %>
-  <%= f.text_field :submission_id %>
-  <%= f.label :text %>
-  <%= f.text_area :text %>
+  <%= f.select(:submission_id, @submissions, { include_blank: 'Select submission' }) %>
   <%= f.submit "Create" %>
 <% end %>

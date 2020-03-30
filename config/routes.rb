@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :organizations
     resources :events
     resources :submissions
+    resources :sources
+    resources :scraping_attributes
 
     authenticate :user, ->(user) { user.admin? } do
       namespace :tools do
