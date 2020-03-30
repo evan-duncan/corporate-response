@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     resources :submissions
 
     authenticate :user, ->(user) { user.admin? } do
-      mount Sidekiq::Web => '/sidekiq'
+      namespace :tools do
+        mount Sidekiq::Web => '/sidekiq'
+        resource :sentiments, only: [:new, :create]
+      end
     end
 
     root to: "users#index"

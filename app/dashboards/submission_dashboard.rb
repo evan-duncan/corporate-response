@@ -11,6 +11,7 @@ class SubmissionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     url: Field::String,
     opinion: EnumField,
+    sentiment: EnumField,
     processed: Field::Boolean,
     processed_at: Field::DateTime,
     created_at: Field::DateTime,
@@ -26,6 +27,7 @@ class SubmissionDashboard < Administrate::BaseDashboard
   id
   url
   opinion
+  sentiment
   processed
   ].freeze
 
@@ -35,6 +37,7 @@ class SubmissionDashboard < Administrate::BaseDashboard
   id
   url
   opinion
+  sentiment
   processed
   processed_at
   created_at
@@ -47,6 +50,7 @@ class SubmissionDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   url
   opinion
+  sentiment
   processed
   processed_at
   ].freeze

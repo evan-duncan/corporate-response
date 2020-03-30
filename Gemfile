@@ -17,6 +17,7 @@ gem 'pundit', '~> 2.1'
 gem 'mini_magick'
 gem 'sass-rails', '>= 6'
 gem 'scout_apm'
+gem 'sentimental'
 gem 'sidekiq', '~> 6.0', '>= 6.0.6'
 gem 'sendgrid-actionmailer'
 gem "sentry-raven"

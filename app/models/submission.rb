@@ -9,5 +9,11 @@ class Submission < ApplicationRecord
     positive
     neutral
     negative
-  ]
+  ], _suffix: true
+
+  enum sentiment: %i[
+    positive
+    neutral
+    negative
+  ], _suffix: true
 end

@@ -19,5 +19,6 @@ as defined by the routes in the `admin/` namespace
   <% end %>
 
   <h4>Tools</h4>
-  <a href="/admin/sidekiq" class="navigation__link navigation__link--inactive">Sidekiq</a>
+  <%= link_to "Sidekiq", admin_tools_sidekiq_web_path, class: 'navigation__link' %>
+  <%= link_to "Create Sentiment", new_admin_tools_sentiments_path, class: 'navigation__link' %>
 </nav>
