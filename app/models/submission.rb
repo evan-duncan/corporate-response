@@ -29,7 +29,7 @@ class Submission < ApplicationRecord
     "#{parsed.scheme}://#{parsed.host}"
   end
 
-  def url_path
+  def path
     parsed = URI.parse(url)
     parsed.path
   end
