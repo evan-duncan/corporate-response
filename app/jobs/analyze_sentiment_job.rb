@@ -25,7 +25,7 @@ class AnalyzeSentimentJob < ApplicationJob
       path submission.path
       heading css: submission.source.scraping_attribute.heading_selector
       subheading css: submission.source.scraping_attribute.subheading_selector
-      story({ css: submission.source.scraping_attribute.story }, list)
+      story({ css: submission.source.scraping_attribute.story_selector }, list)
     end
   end
 end
