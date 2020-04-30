@@ -6,6 +6,7 @@ class Submission < ApplicationRecord
   validates_presence_of :processed_at, if: :processed?
 
   after_create :set_default_sentiment
+  after_create :identify_sentiment
 
   belongs_to :source, optional: true
 
@@ -38,5 +39,9 @@ class Submission < ApplicationRecord
 
   def set_default_sentiment
     self.sentiment = :unknown
+  end
+
+  def identify_sentiment
+    AnalyzeSentimentJob.perform_later(id) if source.present?
   end
 end
