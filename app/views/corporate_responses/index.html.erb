@@ -24,4 +24,12 @@
       </div>
     <% end %>
   <% end %>
+  <% if @submissions.any? %>
+    <h1>Check out the latest submissions</h1>
+    <ol>
+      <% @submissions.each do |submission| %>
+      <li><a href="<%= submission.url %>"><%= submission.url %></a></li>
+      <% end %>
+    </ol>
+  <% end %>
 </div>

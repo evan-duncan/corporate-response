@@ -25,6 +25,7 @@ class Submission < ApplicationRecord
   ], _suffix: true
 
   scope :ready_for_processing, -> { where.not(source: nil) }
+  scope :latest, -> { order(created_at: :desc).limit(20) }
 
   def host_name
     parsed = URI.parse(url)
