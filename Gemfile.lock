@@ -1068,6 +1068,7 @@ GEM
     parser (2.7.0.5)
       ast (~> 2.4.0)
     pg (1.2.3)
+    public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
     pundit (2.1.0)
@@ -1202,6 +1203,7 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    whois (5.0.1)
     wombat (2.10.0)
       activesupport
       mechanize
@@ -1224,6 +1226,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mini_magick
   pg (>= 0.18, < 2.0)
+  public_suffix (~> 4.0, >= 4.0.4)
   puma (~> 4.1)
   pundit (~> 2.1)
   rails (~> 6.0.2, >= 6.0.2.1)
@@ -1241,6 +1244,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webpacker (~> 4.0)
+  whois
   wombat
 
 RUBY VERSION

@@ -6,7 +6,8 @@ class Submission < ApplicationRecord
   validates_presence_of :processed_at, if: :processed?
 
   after_create :set_default_sentiment
-  after_create :identify_sentiment
+  after_create :generate_source, if: proc { source.nil? }
+  after_save :identify_sentiment, if: proc { unknown_sentiment? && source.present? && source.scraping_attribute.present? }
 
   belongs_to :source, optional: true
 
@@ -42,6 +43,10 @@ class Submission < ApplicationRecord
   end
 
   def identify_sentiment
-    AnalyzeSentimentJob.perform_later(id) if source.present?
+    AnalyzeSentimentJob.perform_later(id)
+  end
+
+  def generate_source
+    FindSourceJob.perform_later(url, id)
   end
 end

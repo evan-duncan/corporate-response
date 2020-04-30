@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  add_scraping_attributes_for_source_mailer:
+    notify_admins:
+      subject: Scraping Attributes Needed
+  source_organization_redacted_mailer:
+    notify_admins:
+      subject: Source Organzation Redacted

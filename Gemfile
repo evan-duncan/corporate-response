@@ -11,10 +11,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jbuilder', '~> 2.7'
+gem 'mini_magick'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'public_suffix', '~> 4.0', '>= 4.0.4'
 gem 'puma', '~> 4.1'
 gem 'pundit', '~> 2.1'
-gem 'mini_magick'
 gem 'sass-rails', '>= 6'
 gem 'scout_apm'
 gem 'sentimental'
@@ -23,6 +24,7 @@ gem 'sendgrid-actionmailer'
 gem "sentry-raven"
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+gem 'whois'
 gem 'wombat'
 
 group :development, :test do

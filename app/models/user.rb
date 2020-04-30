@@ -13,6 +13,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable
 
+  scope :admins, -> { where(role: :admin) }
+
   private
 
     def set_default_role
